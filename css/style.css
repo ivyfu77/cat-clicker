@@ -1,0 +1,19 @@
+.container {
+	width: 60%;
+	margin: 20px auto;
+}
+#cat, #counter {
+	width: 100%;
+}
+#clear {
+	border: 1px solid darkgrey;
+	width: 80px;
+	margin-left: 0;
+	cursor: pointer;
+	text-align: center;
+	background-color: lightblue;
+	margin-top: 30px;
+}
+#cat img {
+	width: 100%;
+}
