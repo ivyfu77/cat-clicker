@@ -1,8 +1,13 @@
 .container {
-	width: 60%;
+	width: 80%;
 	margin: 20px auto;
 }
-#cat, #counter {
+.cat {
+	width: 45%;
+	display: inline-block;
+	margin: 15px;
+}
+#cat1, #counter1, #cat2, #counter2 {
 	width: 100%;
 }
 #clear {
@@ -14,6 +19,6 @@
 	background-color: lightblue;
 	margin-top: 30px;
 }
-#cat img {
+#cat1 img, #cat2 img {
 	width: 100%;
 }
