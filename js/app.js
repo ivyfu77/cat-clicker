@@ -1,25 +1,50 @@
 
 $( document ).ready(function() {
-    var catName1 = "Jess";
-    var catName2 = "Momo";
-    $('#name1').text(catName1);
-    $('#name2').text(catName2);
 
-	var counter1 = 0;
-	var counter2 = 0;
-	$('#cat1').click(function(e) {
-	  console.log(++counter1);
-	  $("#counter1").text("You have clicked " + catName1 + " " + counter1 + " times.");
-	});
-	$('#cat2').click(function(e) {
-	  console.log(++counter2);
-	  $("#counter2").text("You have clicked " + catName2 + " " + counter2 + " times.");
+	var cats = [{name:'Jess', id:'cat1', img:'img/cute-cat-jess.jpg', counter:0},
+				{name:'Momo', id:'cat2', img:'img/cute-cat-momo.jpg', counter:0},
+				{name:'Alen', id:'cat3', img:'img/cute-cat-alen.jpg', counter:0},
+				{name:'Angel', id:'cat4', img:'img/cute-cat-angel.jpg', counter:0},
+				{name:'Dala & Deby', id:'cat5', img:'img/cute-cat-dala-deby-small.jpg', counter:0},
+				{name:'Star', id:'cat6', img:'img/cute-cat-star.jpg', counter:0}];
+	var curCounter = 0;
+	var curCat = cats[0];
+
+	var selectCat = function(theCat) {
+		return function() {
+			curCat = theCat;
+			console.log(curCat);
+			curCounter = theCat.counter;
+			$("#catName").text(theCat.name);
+			$("#catImgBox img").attr("src", theCat.img);
+			if (curCounter == 0) {
+				$("#counter").text("Click the picture.");
+			} else {
+				$("#counter").text("You have clicked " + curCat.name + " " + curCounter + " times.");
+			}
+		};
+	};
+
+	$('#catImgBox').click(function(e) {
+	  console.log(++curCounter);
+	  $("#counter").text("You have clicked " + curCat.name + " " + curCounter + " times.");
+	  curCat.counter = curCounter;
+	  $("#"+curCat.id+" span").text(" ("+curCounter+")");
 	});
 
 	$('#clear').click(function(e) {
-		counter1 = 0;
-		counter2 = 0;
-		$("#counter1").text("Click the picture.");
-		$("#counter2").text("Click the picture.");
+		curCounter = 0;
+		curCat.counter = curCounter;
+		$("#counter").text("Click the picture.");
+		$("#"+curCat.id+" span").text(" ("+curCounter+")");
 	});
+
+	for (var i = 0; i < cats.length; i++) {
+		var item = '<li id="' + cats[i].id + '"><a href="#"><img src="' + cats[i].img + '" />' + 
+					cats[i].name + '<span> (' + cats[i].counter + ')' + '<span></a></li>';
+		$("aside ul").append(item);
+		var cat = cats[i];
+		$("#" + cats[i].id).click(selectCat(cat));
+	}
+
 });

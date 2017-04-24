@@ -1,24 +1,76 @@
-.container {
+* { margin: 0; padding: 0;}
+ul, li {
+	list-style-type: none;
+}
+a {
+	text-decoration: none;
+}
+
+header {
+	//position: fixed;
+	height: 100px;
 	width: 80%;
-	margin: 20px auto;
+	margin: 0 auto;
+	background-color: #fcf5c2;
+	text-align: center;
 }
-.cat {
-	width: 45%;
+header span {
 	display: inline-block;
-	margin: 15px;
+	margin-top: 25px;
+	font-size: 2em;
+	font-weight: bold;
 }
-#cat1, #counter1, #cat2, #counter2 {
-	width: 100%;
+.container {
+	display: flex;
+	width: 80%;
+	margin: 0px auto;
+}
+aside {
+	width: 30%;
+	background-color: #cfdff9;
+	padding: 15px;
+}
+aside li {
+	height: 50px;
+	align-items: center;
+}
+aside a {
+	display: flex;
+	align-items: center;
+	color: darkslategray;
+    font-size: 1.2em;
+}
+aside img {
+	margin-right: 20px;
+	width: 60px;
+}
+.catInfo {
+	width: 70%;
+	text-align: center;
+	padding-top: 30px;
+	background-color: azure;
+}
+
+#catName {
+	margin: 30px auto;
+}
+
+#counter {
+	margin-top: 30px;
+	margin-bottom: 30px;
 }
 #clear {
 	border: 1px solid darkgrey;
-	width: 80px;
-	margin-left: 0;
-	cursor: pointer;
-	text-align: center;
-	background-color: lightblue;
-	margin-top: 30px;
+    width: 100px;
+    font-size: 1.2em;
+    margin: 100px auto 50px auto;
+    cursor: pointer;
+    text-align: center;
+    background-color: lightblue;
+    height: 30px;
+    padding-top: 8px;
+    color: #406171;
 }
-#cat1 img, #cat2 img {
-	width: 100%;
+#catImgBox img {
+	width: 80%;
 }
