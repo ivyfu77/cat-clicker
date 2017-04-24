@@ -7,8 +7,8 @@ $( document ).ready(function() {
 				{name:'Angel', id:'cat4', img:'img/cute-cat-angel.jpg', counter:0},
 				{name:'Dala & Deby', id:'cat5', img:'img/cute-cat-dala-deby-small.jpg', counter:0},
 				{name:'Star', id:'cat6', img:'img/cute-cat-star.jpg', counter:0}];
-	var curCounter = 0;
 	var curCat = cats[0];
+	var curCounter = curCat.counter;
 
 	var selectCat = function(theCat) {
 		return function() {
