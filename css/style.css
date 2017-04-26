@@ -32,7 +32,6 @@ aside {
 }
 aside li {
 	height: 50px;
-	align-items: center;
 }
 aside a {
 	display: flex;
