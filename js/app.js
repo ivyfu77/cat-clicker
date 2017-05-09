@@ -44,25 +44,31 @@ $(function() {
 		},
 		init: function() {
 			this.setCurCat(data.cats[0]);
-			view.init;
+			view.init();
 		}
 	};
 
 	var view = {
 		init: function() {
-
+			var curCat = octopus.getCurCat();
 			this.renderCatList();
 
+			$("#catName").text(curCat.name);
+			$("#catImgBox img").attr("src", curCat.img);
+			$("#counter").text(octopus.getCounterText());
+
 			$('#catImgBox').click(function(e) {
-				console.log(octopus.addCounter(1));
+				var clickCat = octopus.getCurCat();
+				octopus.addCounter(1);
 				$("#counter").text(octopus.getCounterText());
-				$("#"+data.curCat.id+" span").text(" ("+octopus.getCurCounter()+")");
+				$("#"+clickCat.id+" span").text(" ("+clickCat.counter+")");
 			});
 
 			$('#clear').click(function(e) {
+				var clearCat = octopus.getCurCat();
 				octopus.setCounter(0);
 				$("#counter").text("Click the picture.");
-				$("#"+data.curCat.id+" span").text(" (0)");
+				$("#"+clearCat.id+" span").text(" (0)");
 			});
 		},
 		selectCat: function(theCat) {
