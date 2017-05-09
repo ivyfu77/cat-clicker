@@ -1,5 +1,5 @@
 
-$( document ).ready(function() {
+$(function() {
 
 	var data = {
 		cats:  [{name:'Jess', id:'cat1', img:'img/cute-cat-jess.jpg', counter:0},
@@ -7,8 +7,8 @@ $( document ).ready(function() {
 				{name:'Alen', id:'cat3', img:'img/cute-cat-alen.jpg', counter:0},
 				{name:'Angel', id:'cat4', img:'img/cute-cat-angel.jpg', counter:0},
 				{name:'Dala & Deby', id:'cat5', img:'img/cute-cat-dala-deby-small.jpg', counter:0},
-				{name:'Star', id:'cat6', img:'img/cute-cat-star.jpg', counter:0}];
-		curCat: this.cats[0]
+				{name:'Star', id:'cat6', img:'img/cute-cat-star.jpg', counter:0}],
+		curCat: null
 	};
 
 	var octopus = {
@@ -41,11 +41,17 @@ $( document ).ready(function() {
 		addCounter: function(num) {
 			data.curCat.counter += num;
 			return data.curCat.counter;
+		},
+		init: function() {
+			this.setCurCat(data.cats[0]);
+			view.init;
 		}
 	};
 
 	var view = {
 		init: function() {
+
+			this.renderCatList();
 
 			$('#catImgBox').click(function(e) {
 				console.log(octopus.addCounter(1));
@@ -81,4 +87,6 @@ $( document ).ready(function() {
 		}
 	};
 
-});
+	octopus.init();
+
+}());
