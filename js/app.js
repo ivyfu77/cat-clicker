@@ -46,32 +46,59 @@ $(function() {
 		init: function() {
 			var curCat = octopus.getCurCat();
 
+			//Get the cat info objs
 			this.catName = $("#catName");
 			this.catImage = $("#catImgBox img");
 			this.counter = $("#counter");
+
+			//Get the edit cat input objs
+			this.editForm = $("#catEdit");
+			this.editName = $("#editName");
+			this.editCounter = $("#editCounter");
 
 			this.renderCat(curCat);
 
 			this.renderCatList();
 
 			$('#catImgBox').click(function(e) {
-				var clickCat = octopus.getCurCat();
 				octopus.addCounter(1);
-				view.counter.text(octopus.getCounterText(clickCat.counter));
-				$("#"+clickCat.id+" span").text(" ("+clickCat.counter+")");
+				var clickCat = octopus.getCurCat();
+				view.renderCat(clickCat);
+				view.renderCatItem(clickCat);
 			});
 
 			$('#clear').click(function(e) {
-				var clearCat = octopus.getCurCat();
 				octopus.setCounter(0);
-				view.counter.text(octopus.getCounterText(0));
-				$("#"+clearCat.id+" span").text(" (0)");
+				var clearCat = octopus.getCurCat();
+				view.renderCat(clearCat);
+				view.renderCatItem(clearCat);
 			});
+
+			$('#admin').click(function() {
+				view.editForm.attr("style", "visibility: visible");
+			});
+			$("#cancelBtn").click(function() {
+				view.editForm.attr("style", "visibility: hidden");
+			});
+			this.editForm.submit(function(e) {
+				e.preventDefault();
+				var curCat = octopus.getCurCat();
+				curCat.name = view.editName.val();
+				octopus.setCounter(+view.editCounter.val());
+				view.renderCat(curCat);
+				view.renderCatItem(curCat);
+			})
+		},
+		renderCatItem: function(cat) {
+			$("#"+cat.id+" .itemName").text(cat.name);
+			$("#"+cat.id+" .itemNum").text(" ("+cat.counter+")");
 		},
 		renderCat: function(cat) {
 			this.catName.text(cat.name);
 			this.catImage.attr("src", cat.img);
 			this.counter.text(octopus.getCounterText(cat.counter));
+			this.editName.val(cat.name);
+			this.editCounter.val(+cat.counter);
 		},
 		selectCat: function(theCat) {
 			return function() {
@@ -82,8 +109,8 @@ $(function() {
 		renderCatList: function() {
 			var cats = octopus.getCats();
 			for (var i = 0; i < cats.length; i++) {
-				var item = '<li id="' + cats[i].id + '"><a href="#"><img src="' + cats[i].img + '" />' + 
-							cats[i].name + '<span> (' + cats[i].counter + ')' + '<span></a></li>';
+				var item = '<li id="' + cats[i].id + '"><a href="#"><img src="' + cats[i].img + '" /><span class="itemName">' + 
+							cats[i].name + '</span><span class="itemNum"> (' + cats[i].counter + ')' + '<span></a></li>';
 				$("aside ul").append(item);
 				var cat = cats[i];
 				$("#" + cats[i].id).click(this.selectCat(cat));

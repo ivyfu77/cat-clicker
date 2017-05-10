@@ -46,7 +46,7 @@ aside img {
 .catInfo {
 	width: 70%;
 	text-align: center;
-	padding-top: 30px;
+	//padding-top: 30px;
 	background-color: azure;
 }
 
@@ -58,17 +58,32 @@ aside img {
 	margin-top: 30px;
 	margin-bottom: 30px;
 }
-#clear {
+.btn {
+	display: inline-block;
 	border: 1px solid darkgrey;
-    width: 100px;
-    font-size: 1.2em;
-    margin: 100px auto 50px auto;
-    cursor: pointer;
-    text-align: center;
-    background-color: lightblue;
-    height: 30px;
-    padding-top: 8px;
-    color: #406171;
+	width: 100px;
+	font-size: 1em;
+	margin: 10px 15px 30px auto;
+	cursor: pointer;
+	text-align: center;
+	background-color: lightblue;
+	height: 23px;
+	padding-top: 5px;
+	color: #406171;
+	
+}
+#catEdit {
+	visibility: hidden;
+	margin: 0 auto 20px;
+}
+#catEdit p {
+	display: inline;
+	text-align: left;
+	padding-top: 10px;
+	padding-right: 15px;
+}
+#catEdit label {
+	width: 50px;
 }
 #catImgBox img {
 	width: 80%;
