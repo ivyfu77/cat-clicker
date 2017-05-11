@@ -38,14 +38,14 @@ var initialCats = [ {name:'Jess', id:'cat1', imgSrc:'img/cute-cat-jess.jpg', cli
 				  ];
 
 var ViewModel = function() {
-	//When add with: curCat binding in view, click img will get the binding context this -> curCat
+	//When add “with: curCat” binding in view, click img will get the binding context this -> curCat
 	//Use self as a pointer to keep the ViewModel link
 	var self = this; 
 
 	// TODO: Define as vars only work when just refresh the page
-	// var editForm = $("#catEdit");
-	// var editName = $("#editName");
-	// var editCounter = $("#editCounter");
+	// this.editForm = $("#catEdit");
+	// this.editName = $("#editName");
+	// this.editCounter = $("#editCounter");
 
 	this.catList = ko.observableArray([]);
 	initialCats.forEach(function(cat) {
@@ -65,13 +65,16 @@ var ViewModel = function() {
 		self.curCat().clickCount(0);
 	};
 	this.showForm = function() {
-		//console.log(editForm);
+		//console.log(self.editForm);
+		// self.editForm.css("visibility", "visible");
+		// self.editName.val(self.curCat().name());
+		// self.editCounter.val(self.curCat().clickCount());
 		$("#catEdit").attr("style", "visibility: visible");
 		$("#editName").val(self.curCat().name());
 		$("#editCounter").val(self.curCat().clickCount());
 	};
 	this.hideForm = function() {
-		$("#catEdit").attr("style", "visibility: hidden");
+		$("#catEdit").css("visibility", "hidden");
 	};
 	this.changeForm = function() {
 		self.curCat().name($("#editName").val());
