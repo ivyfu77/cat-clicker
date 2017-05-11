@@ -14,12 +14,12 @@
 			<ul></ul>
 		</aside>
 		<div class="catInfo">
-			<h2 id="catName" data-bind="text: name"></h2>
-			<h3 data-bind="text: level"></h3>
-			<div id="catImgBox" data-bind="click: incrementCounter"><img src="" title="Click Me! Meow ~~~" data-bind="attr: {src: imgSrc}" /></div>
-			<div id="counter" data-bind="text: clickCount"></div>
+			<h2 id="catName" data-bind="text: curCat().name"></h2>
+			<h3 data-bind="text: curCat().level"></h3>
+			<div id="catImgBox" data-bind="click: incrementCounter"><img src="" title="Click Me! Meow ~~~" data-bind="attr: {src: curCat().imgSrc}" /></div>
+			<div id="counter" data-bind="text: curCat().clickCount"></div>
 			<h4>Nick Names:</h4>
-			<ul data-bind="foreach: nickNames">
+			<ul data-bind="foreach: curCat().nickNames">
 				<li data-bind="text: name"></li>
 			</ul>
 			<div class="btn" id="clear">Clear</div>
