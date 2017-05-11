@@ -4,7 +4,7 @@ var Cat = function (data) {
 	this.imgSrc = ko.observable(data.imgSrc);
 	this.imgAttribution = ko.observable(data.imgAttribution);
 	this.nickNames = ko.observableArray(data.nickNames);
-	
+
 	this.level = ko.computed(function() {
 		if (this.clickCount() < 10) {
 			return "Newborn";
@@ -16,19 +16,25 @@ var Cat = function (data) {
 	}, this);
 };
 
+var initialCats = [ {name:'Jess', id:'cat1', imgSrc:'img/cute-cat-jess.jpg', clickCount:0, nickNames:[{ name: 'cucu' }]},
+					{name:'Momo', id:'cat2', imgSrc:'img/cute-cat-momo.jpg', clickCount:0, nickNames:[{ name: 'tibi' }]},
+					{name:'Alen', id:'cat3', imgSrc:'img/cute-cat-alen.jpg', clickCount:0, nickNames:[{ name: 'chou' }]},
+					{name:'Angel', id:'cat4', imgSrc:'img/cute-cat-angel.jpg', clickCount:0, nickNames:[{ name: 'mini' }]},
+					{name:'Dala & Deby', id:'cat5', imgSrc:'img/cute-cat-dala-deby-small.jpg', clickCount:0, nickNames:[{ name: 'twin' }]},
+					{name:'Star', id:'cat6', imgSrc:'img/cute-cat-star.jpg', clickCount:0, nickNames:[{ name: 'nana' }]},
+					{name:'Orbit', id:'cat7', imgSrc:'img/cute-cat-orbit.jpg', clickCount:0, nickNames:[{ name: 'dan' }]}
+				  ];
+
 var ViewModel = function() {
 	//When add with: curCat binding in view, click img will get the binding context this -> curCat
 	//Use self as a pointer to keep the ViewModel link
 	var self = this; 
-	this.curCat = ko.observable(new Cat({
-		clickCount: 0,
-		name: "Jess",
-		imgSrc: "img/cute-cat-jess.jpg",
-		imgAttribution: "https://i.ytimg.com/vi/W-PBFMECvTE/maxresdefault.jpg",
-		nickNames: [{ name: 'Bert' },
-			        { name: 'Charles'},
-			        { name: 'Denise'}]
-	}));
+
+	this.catList = ko.observableArray([]);
+	initialCats.forEach(function(cat) {
+		self.catList.push(new Cat(cat));
+	});
+	this.curCat = ko.observable(self.catList()[0]);
 
 	this.incrementCounter = function() {
 		//console.log(this);  => Will console the Cat object
