@@ -27,9 +27,9 @@
 			<ul data-bind="foreach: nickNames">
 				<li data-bind="text: name"></li>
 			</ul>
-			<div class="btn" id="clear">Clear</div>
-			<div class="btn" id="admin">Admin</div>
-			<form id="catEdit">
+			<div class="btn" id="clear" data-bind="click: $parent.clearCount">Clear</div>
+			<div class="btn" id="admin" data-bind="click: $parent.showForm">Admin</div>
+			<form id="catEdit" data-bind="submit: $parent.changeForm">
 				<p> 
 				    <label for="editName">Name:</label>
 				    <input type="text" id="editName" name="name" required />
@@ -39,12 +39,13 @@
 				    <input type="number" id="editCounter" name="counter" min="0" />
 				</p>
 				<p>
-					<input type="button" id="cancelBtn" value="Cancel" />
+					<input type="button" id="cancelBtn" value="Cancel" data-bind="click: $parent.hideForm"/>
 					<input type="submit" id="saveBtn" value="Save" />
 				</p>
 			</form>
 		</div>
 	</div>
+	<script src="js/libs/jquery.min.js"></script>
 	<script src="js/libs/knockout-3.4.2.js"></script>
 	<script src="js/app.js"></script>
 </body>
