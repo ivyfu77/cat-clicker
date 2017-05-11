@@ -5,6 +5,10 @@ var Cat = function (data) {
 	this.imgAttribution = ko.observable(data.imgAttribution);
 	this.nickNames = ko.observableArray(data.nickNames);
 
+	this.showCount = ko.computed(function() {
+		return "("+this.clickCount()+")";
+	}, this);
+
 	this.level = ko.computed(function() {
 		if (this.clickCount() < 10) {
 			return "Newborn";

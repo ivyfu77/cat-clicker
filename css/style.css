@@ -31,11 +31,12 @@ aside {
 	padding: 15px;
 }
 aside li {
-	height: 50px;
-}
-aside a {
 	display: flex;
 	align-items: center;
+	height: 50px;
+	cursor: pointer;
+}
+aside a {
 	color: darkslategray;
     font-size: 1.2em;
 }

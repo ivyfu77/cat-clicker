@@ -12,9 +12,10 @@
 	<div class="container">
 		<aside class="catList">
 			<ul data-bind="foreach: catList">
-				<li>
-					<a href="#" data-bind="click: $parent.setCurCat"><img src="" data-bind="attr: {src: imgSrc}" />
-					<span data-bind="text: name"></span></a>
+				<li data-bind="click: $parent.setCurCat">
+					<div><img src="" data-bind="attr: {src: imgSrc}" /></div>
+					<div data-bind="text: name"></div>
+					<div data-bind="text: showCount" style="margin-left: 10px"></div>
 				</li>
 			</ul>
 		</aside>
