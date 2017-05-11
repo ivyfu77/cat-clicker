@@ -20,13 +20,21 @@ var Cat = function (data) {
 	}, this);
 };
 
-var initialCats = [ {name:'Jess', id:'cat1', imgSrc:'img/cute-cat-jess.jpg', clickCount:0, nickNames:[{ name: 'cucu' }]},
-					{name:'Momo', id:'cat2', imgSrc:'img/cute-cat-momo.jpg', clickCount:0, nickNames:[{ name: 'tibi' }]},
-					{name:'Alen', id:'cat3', imgSrc:'img/cute-cat-alen.jpg', clickCount:0, nickNames:[{ name: 'chou' }]},
-					{name:'Angel', id:'cat4', imgSrc:'img/cute-cat-angel.jpg', clickCount:0, nickNames:[{ name: 'mini' }]},
-					{name:'Dala & Deby', id:'cat5', imgSrc:'img/cute-cat-dala-deby-small.jpg', clickCount:0, nickNames:[{ name: 'twin' }]},
-					{name:'Star', id:'cat6', imgSrc:'img/cute-cat-star.jpg', clickCount:0, nickNames:[{ name: 'nana' }]},
-					{name:'Orbit', id:'cat7', imgSrc:'img/cute-cat-orbit.jpg', clickCount:0, nickNames:[{ name: 'dan' }]}
+var initialCats = [ {name:'Jess', id:'cat1', imgSrc:'img/cute-cat-jess.jpg', clickCount:0, 
+					 imgAttribution: "https://i.ytimg.com/vi/W-PBFMECvTE/maxresdefault.jpg",
+					 nickNames:[{ name: 'cucu' }]},
+					{name:'Momo', id:'cat2', imgSrc:'img/cute-cat-momo.jpg', clickCount:0, imgAttribution: "",
+					 nickNames:[{ name: 'tibi' }]},
+					{name:'Alen', id:'cat3', imgSrc:'img/cute-cat-alen.jpg', clickCount:0, imgAttribution: "",
+					 nickNames:[{ name: 'chou' }]},
+					{name:'Angel', id:'cat4', imgSrc:'img/cute-cat-angel.jpg', clickCount:0, imgAttribution: "",
+					 nickNames:[{ name: 'mini' }]},
+					{name:'Dala & Deby', id:'cat5', imgSrc:'img/cute-cat-dala-deby-small.jpg', clickCount:0, imgAttribution: "",
+					 nickNames:[{ name: 'twin' }]},
+					{name:'Star', id:'cat6', imgSrc:'img/cute-cat-star.jpg', clickCount:0, imgAttribution: "",
+					 nickNames:[{ name: 'nana' }]},
+					{name:'Orbit', id:'cat7', imgSrc:'img/cute-cat-orbit.jpg', clickCount:0, imgAttribution: "",
+					 nickNames:[{ name: 'dan' }]}
 				  ];
 
 var ViewModel = function() {
