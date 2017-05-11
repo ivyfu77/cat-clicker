@@ -1,14 +1,10 @@
-var Cat = function () {
-	this.clickCount = ko.observable(0);
-	this.name = ko.observable("Jess");
-	this.imgSrc = ko.observable("img/cute-cat-jess.jpg");
-	this.imgAttribution = ko.observable("https://i.ytimg.com/vi/W-PBFMECvTE/maxresdefault.jpg");
-
-	this.nickNames = ko.observableArray([
-        { name: 'Bert' },
-        { name: 'Charles' },
-        { name: 'Denise' }
-    ]);
+var Cat = function (data) {
+	this.clickCount = ko.observable(data.clickCount);
+	this.name = ko.observable(data.name);
+	this.imgSrc = ko.observable(data.imgSrc);
+	this.imgAttribution = ko.observable(data.imgAttribution);
+	this.nickNames = ko.observableArray(data.nickNames);
+	
 	this.level = ko.computed(function() {
 		if (this.clickCount() < 10) {
 			return "Newborn";
@@ -21,12 +17,22 @@ var Cat = function () {
 };
 
 var ViewModel = function() {
-	var self = this;
-	this.curCat = ko.observable(new Cat());
+	//When add with: curCat binding in view, click img will get the binding context this -> curCat
+	//Use self as a pointer to keep the ViewModel link
+	var self = this; 
+	this.curCat = ko.observable(new Cat({
+		clickCount: 0,
+		name: "Jess",
+		imgSrc: "img/cute-cat-jess.jpg",
+		imgAttribution: "https://i.ytimg.com/vi/W-PBFMECvTE/maxresdefault.jpg",
+		nickNames: [{ name: 'Bert' },
+			        { name: 'Charles'},
+			        { name: 'Denise'}]
+	}));
 
 	this.incrementCounter = function() {
-		//console.log(self);
-		self.curCat().clickCount(self.curCat().clickCount() + 1);
+		//console.log(this);  => Will console the Cat object
+ 		self.curCat().clickCount(self.curCat().clickCount() + 1);
 	};
 
 };
