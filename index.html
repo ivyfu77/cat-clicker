@@ -14,9 +14,14 @@
 			<ul></ul>
 		</aside>
 		<div class="catInfo">
-			<h2 id="catName"></h2>
-			<div id="catImgBox"><img src="" title="Click Me! Meow ~~~" /></div>
-			<div id="counter"></div>
+			<h2 id="catName" data-bind="text: name"></h2>
+			<h3 data-bind="text: level"></h3>
+			<div id="catImgBox" data-bind="click: incrementCounter"><img src="" title="Click Me! Meow ~~~" data-bind="attr: {src: imgSrc}" /></div>
+			<div id="counter" data-bind="text: clickCount"></div>
+			<h4>Nick Names:</h4>
+			<ul data-bind="foreach: nickNames">
+				<li data-bind="text: name"></li>
+			</ul>
 			<div class="btn" id="clear">Clear</div>
 			<div class="btn" id="admin">Admin</div>
 			<form id="catEdit">
