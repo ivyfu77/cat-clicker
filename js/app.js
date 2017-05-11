@@ -33,9 +33,11 @@ var ViewModel = function() {
 	//When add with: curCat binding in view, click img will get the binding context this -> curCat
 	//Use self as a pointer to keep the ViewModel link
 	var self = this; 
-	var editForm = $("#catEdit");
-	var editName = $("#editName");
-	var editCounter = $("#editCounter");
+
+	// TODO: Define as vars only work when just refresh the page
+	// var editForm = $("#catEdit");
+	// var editName = $("#editName");
+	// var editCounter = $("#editCounter");
 
 	this.catList = ko.observableArray([]);
 	initialCats.forEach(function(cat) {
@@ -55,16 +57,17 @@ var ViewModel = function() {
 		self.curCat().clickCount(0);
 	};
 	this.showForm = function() {
-		editForm.attr("style", "visibility: visible");
-		editName.val(self.curCat().name());
-		editCounter.val(self.curCat().clickCount());
+		//console.log(editForm);
+		$("#catEdit").attr("style", "visibility: visible");
+		$("#editName").val(self.curCat().name());
+		$("#editCounter").val(self.curCat().clickCount());
 	};
 	this.hideForm = function() {
-		editForm.attr("style", "visibility: hidden");
+		$("#catEdit").attr("style", "visibility: hidden");
 	};
 	this.changeForm = function() {
-		self.curCat().name(editName.val());
-		self.curCat().clickCount(+editCounter.val());
+		self.curCat().name($("#editName").val());
+		self.curCat().clickCount(+$("#editCounter").val());
 	};
 };
 
