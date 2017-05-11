@@ -11,7 +11,12 @@
 	</header>
 	<div class="container">
 		<aside class="catList">
-			<ul></ul>
+			<ul data-bind="foreach: catList">
+				<li>
+					<a href="#" data-bind="click: $parent.setCurCat"><img src="" data-bind="attr: {src: imgSrc}" />
+					<span data-bind="text: name"></span></a>
+				</li>
+			</ul>
 		</aside>
 		<div class="catInfo" data-bind="with: curCat">
 			<h2 id="catName" data-bind="text: name"></h2>

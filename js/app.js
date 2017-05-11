@@ -41,6 +41,9 @@ var ViewModel = function() {
  		self.curCat().clickCount(self.curCat().clickCount() + 1);
 	};
 
+	this.setCurCat = function() {
+		self.curCat(this);
+	};
 };
 
 ko.applyBindings(new ViewModel());
